@@ -130,3 +130,56 @@ function handle_newsletter_submission() {
 }
 add_action('wp', 'handle_newsletter_submission');
 
+function newsletter_admin_menu() {
+    add_menu_page(
+        'Newsletter',                 // Page title
+        'Newsletter',                 // Menu title
+        'manage_options',             // Capability
+        'newsletter_menu',            // Menu slug
+        'newsletter_menu_page',       // Function to display the page content
+        'dashicons-email-alt',        // Icon (using a dashicon)
+        6                             // Position
+    );
+}
+
+add_action('admin_menu', 'newsletter_admin_menu');
+
+function newsletter_menu_page() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'newsletter_subscribers';
+
+    // Retrieve all the records from the newsletter table
+    $results = $wpdb->get_results("SELECT * FROM $table_name");
+
+    echo '<div class="wrap">';
+    echo '<h1>Newsletter Subscribers</h1>';
+    
+    if ($results) {
+        echo '<table class="wp-list-table widefat fixed striped table-view-list">';
+        echo '<thead>';
+        echo '<tr>';
+        echo '<th scope="col">ID</th>';
+        echo '<th scope="col">Email</th>';
+        echo '<th scope="col">Date Subscribed</th>';
+        echo '</tr>';
+        echo '</thead>';
+        echo '<tbody>';
+
+        foreach ($results as $row) {
+            echo '<tr>';
+            echo '<td>' . esc_html($row->id) . '</td>';
+            echo '<td>' . esc_html($row->email) . '</td>';
+            echo '<td>' . esc_html($row->subscribed_at) . '</td>';
+            echo '</tr>';
+        }
+
+        echo '</tbody>';
+        echo '</table>';
+    } else {
+        echo '<p>No newsletter subscribers found.</p>';
+    }
+
+    echo '</div>';
+}
+
+

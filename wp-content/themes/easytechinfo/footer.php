@@ -54,7 +54,7 @@
         &copy; Copyright <strong>EasyTechInfo</strong>. All Rights Reserved
       </div>
       <div class="credits">
-        Designed by <a href="https://easytechinfo.com/">EasyTechInfo</a>
+        Designed by <a href="">EasyTechInfo</a>
       </div>
     </div>
 </footer><!-- End Footer -->

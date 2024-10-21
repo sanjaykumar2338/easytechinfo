@@ -31,7 +31,7 @@
       <!-- ======= hero Section ======= -->
       <section id="hero">
          <div class="hero-container">
-            <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+            <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000">
                <ol id="hero-carousel-indicators" class="carousel-indicators"></ol>
                <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/mobile.webp)">
